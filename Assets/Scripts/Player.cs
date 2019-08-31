@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     float moveSpeed;
     Animator animator;
     SpriteRenderer spriteRenderer;
-    bool moving;
+    bool moving; 
 
     void Awake()
     {
@@ -24,9 +24,12 @@ public class Player : MonoBehaviour
 
         if(moving)
         {
-            animator.SetFloat("move-X", axis.x);
-            animator.SetFloat("move-Y", axis.y);
+            animator.SetFloat("move-x", axis.x);
+            animator.SetFloat("move-y", axis.y);
         }
+
+        animator.SetBool("moving",moving);
+        spriteRenderer.flipX = axis.x < 0 ? true : axis.x > 0 ? false : spriteRenderer.flipX; 
     }
     
 }
